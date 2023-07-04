@@ -10,5 +10,5 @@ class Portafolio_contact extends Model
     use HasFactory;
     protected $table = 'score';
     protected $primarykey = "id";
-    protected $fillable = ["name","numero telefonico","direccion de correo","tema","mensaje"];
+    protected $fillable = ["name","numero_telefonico","direccion_de_correo","tema","mensaje"];
 }
