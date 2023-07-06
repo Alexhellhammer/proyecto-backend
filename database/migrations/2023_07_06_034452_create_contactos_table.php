@@ -11,19 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('d_b_restaurants', function (Blueprint $table) {
+        Schema::create('contactos', function (Blueprint $table) {
             $table->increments("id");
             $table->string("Nombres");
-            $table->string("Apellidos");
-            $table->string("Numero identificacion");
+            $table->string("telefono");
             $table->string("E-mail");
-            $table->string("Telefono");
+            $table->string("tema");
+            $table->string("mensaje");
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('d_b_restaurants');
+        Schema::dropIfExists('contactos');
     }
 };
