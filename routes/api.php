@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\Api\portafolio_contact_controller
+use App\Http\Controllers\Api\contactoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,33 +15,24 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+/* api formulario usuario*/
 
-//  Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//      return $request->user();
-//  });
+Route::post('/userC',[UsuarioController::class,"create"]);
+Route::get('/userR',[UsuarioController::class,"read"]);
+Route::patch('/userU',[UsuarioController::class,"update"]);
+Route::delete('/userD',[UsuarioController::class,"delete"]);
 
-//  Route::post("/contacto",[portafolio_contact_controller::class,"create"]);
+/* api formulario contact*/
 
-Route::get("/saludo",function (Request $request) {
-    $message = ["mensaje" => "hola mundo!"];
-    return response() -> json($message);
-});
 
-Route::put("/libro",function (Request $request) {
-    $message = ["book" => "Cronica de una muerte anunciada",
-                "año de creacion"=>"1985",
-                "autor" => " gabriel garcia marquez"];
-    return response() -> json($message);
-});
-Route::post("/cerveza",function (Request $request) {
-    $message = ["beer" => "Club colombia"];
-    return response() -> json($message);
-});
-Route::patch("/computador",function (Request $request) {
-    $message = ["computer" => "Toshiba"];
-    return response() -> json($message);
-});
-Route::delete("/musica",function (Request $request) {
-    $message = ["musik" => "bad bunny"];
-    return response() -> json($message);
-});
+Route::post('/contactoC',[contactoController::class,"create"]);
+Route::get('/contactoR',[contactoController::class,"read"]);
+
+
+
+
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+     return $request->user();
+ });
+
