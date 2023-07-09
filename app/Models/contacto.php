@@ -10,5 +10,5 @@ class Contacto extends Model
     use HasFactory;
     protected $table = 'contactos';
     protected $primarykey = "id";
-    protected $fillable = ["Nombres","telefono", "Email","tema","mensaje"];
+    protected $fillable = ["Nombres","telefono","Email","tema","mensaje"];
 }

@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Contacto;
 
-class contactoController extends Controller
+class ContactoController extends Controller
 {
     public function read(Request $request){
-        // instancia modelo contacto
+        
         $user = new Contacto();
         
         if($request->query("id")){
@@ -38,12 +38,5 @@ class contactoController extends Controller
     $message=["message" => "Registro Exitoso!!"];
         // return response()->json($message);
     return response()->json($message,Response::HTTP_CREATED);
-    }
-
-
-    public function update(Request $request){
-
-
-    $idBook = $request->query("id");
     }
 }

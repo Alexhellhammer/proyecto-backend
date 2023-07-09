@@ -21,6 +21,13 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+    // $table->increments("id");
+    // $table->string("Nombres");
+    // $table->string("telefono");
+    // $table->string("E-mail");
+    // $table->string("tema");
+    // $table->string("mensaje");
+    // $table->timestamps();
 
     public function down(): void
     {

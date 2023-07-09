@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\contactoController;
+use App\Http\Controllers\Api\ContactoController;
+use App\Http\Controllers\Api\UsuarioController;
+
+
 
 
 /*
@@ -18,18 +21,15 @@ use App\Http\Controllers\Api\contactoController;
 /* api formulario usuario*/
 
 Route::post('/userC',[UsuarioController::class,"create"]);
-Route::get('/userR',[UsuarioController::class,"read"]);
-Route::patch('/userU',[UsuarioController::class,"update"]);
+Route::get('/userR', [UsuarioController::class, 'read']);
+Route::patch('/userU',[UsuarioController::class,"patch"]);
 Route::delete('/userD',[UsuarioController::class,"delete"]);
 
 /* api formulario contact*/
 
 
-Route::post('/contactoC',[contactoController::class,"create"]);
-Route::get('/contactoR',[contactoController::class,"read"]);
-
-
-
+Route::post('/contactoC',[ContactoController::class,"create"]);
+Route::get('/contactoR',[ContactoController::class,"read"]);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
