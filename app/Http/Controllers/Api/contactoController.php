@@ -39,4 +39,55 @@ class ContactoController extends Controller
         // return response()->json($message);
     return response()->json($message,Response::HTTP_CREATED);
     }
+
+
+
+    public function update(Request $request){
+
+
+        $idContacto = $request->query("id");
+
+        $Contacto = new Contacto();
+
+        $newContacto = $Contacto->find($idContacto);
+
+        $newContacto->Nombres = $request->input("Nombres");
+        $newContacto->telefono = $request->input("telefono");
+        $newContacto->Email = $request->input("Email");
+        $newContacto->tema = $request->input("tema");
+        $newContacto->mensaje = $request->input("mensaje");
+        
+
+
+        $newContacto->save();
+
+        $message=[
+            "message" => "Actualización Exitosa!!",
+            "idContacto" => $request->query("id"),
+            "nameContacto"=>$newContacto->name
+        ];
+
+        return $message;
+    }
+
+        
+
+    public function delete(Request $request){
+
+        $idContacto = $request->query("id");
+
+        $Contacto = new Contacto();
+
+        $newContacto = $Contacto->find($idContacto);
+
+        $newContacto->delete();
+
+        $message=[
+            "message" => "Eliminación Exitosa!!",
+            "idContacto" => $request->query("id"),
+        ];
+
+        return $message;
+    }
+
 }

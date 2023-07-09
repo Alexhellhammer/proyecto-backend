@@ -20,16 +20,23 @@ use App\Http\Controllers\Api\UsuarioController;
 */
 /* api formulario usuario*/
 
-Route::post('/userC',[UsuarioController::class,"create"]);
-Route::get('/userR', [UsuarioController::class, 'read']);
-Route::patch('/userU',[UsuarioController::class,"patch"]);
-Route::delete('/userD',[UsuarioController::class,"delete"]);
 
-/* api formulario contact*/
+Route::post("/usuarioC",[UsuarioController::class,'create']);
+
+Route::get("/usuariosR",[UsuarioController::class,'read']);
+
+Route::put("/usuarioU",[UsuarioController::class,'update']);
+
+Route::delete("/usuarioD",[UsuarioController::class,'delete']);
+
+
+/* api formulario contact*/ 
 
 
 Route::post('/contactoC',[ContactoController::class,"create"]);
 Route::get('/contactoR',[ContactoController::class,"read"]);
+Route::put("/contactoU",[UsuarioController::class,'update']);
+Route::delete("/contactoD",[UsuarioController::class,'delete']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

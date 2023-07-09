@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Models\Usuario;
+use Illuminate\Http\Response;
 
 class UsuarioController extends Controller
 {
+
     public function read(Request $request){
-        // instancia modelo contacto
+        
         $user = new Usuario();
         
         if($request->query("id")){
@@ -18,59 +19,65 @@ class UsuarioController extends Controller
         }else{
             $Usuario=$user->all();
         }
-        return response()->json($Usuario,);
+        return response()->json($Usuario);
     }
-
+    
 
     public function create(Request $request){
 
+        $usuario = new Usuario();
+
+        $usuario->Nombres = $request->input("Nombres");
+        $usuario->telefono = $request->input("telefono");
+        $usuario->Email = $request->input("Email");
+   
+
+        $usuario->save();
+
+        $message=["message" => "Resgistro Exitoso!!"];
+
+        return response()->json($message,Response::HTTP_CREATED);
         
-    $Usuario = new Usuario();
-
-    $Usuario->Nombres = $request->input("Nombres");
-    $Usuario->telefono = $request->input("telefono");
-    $Usuario->Email = $request->input("Email");
-  
-    
-    $Usuario->save();
-
-    $message=["message" => "Registro Exitoso!!"];
-        // return response()->json($message);
-    return response()->json($message,Response::HTTP_CREATED);
+        
     }
 
 
-    public function patch(Request $request){
+    
+    public function update(Request $request){
 
 
         $idUsuario = $request->query("id");
 
-        $Usuario = new Usuario();
+        $usuario = new Usuario();
 
-        $newUsuario = $Usuario->find($idUsuario);
+        $newUsuario = $usuario->find($idUsuario);
 
         $newUsuario->Nombres = $request->input("Nombres");
         $newUsuario->telefono = $request->input("telefono");
         $newUsuario->Email = $request->input("Email");
         
+
+
         $newUsuario->save();
 
         $message=[
             "message" => "Actualización Exitosa!!",
             "idUsuario" => $request->query("id"),
-            "nameBook"=>$newUsuario->Nombres
+            "nameUsuario"=>$newUsuario->name
         ];
 
         return $message;
     }
 
+        
+
     public function delete(Request $request){
 
         $idUsuario = $request->query("id");
 
-        $Usuario = new Usuario();
+        $usuario = new Usuario();
 
-        $newUsuario = $Usuario->find($idUsuario);
+        $newUsuario = $usuario->find($idUsuario);
 
         $newUsuario->delete();
 
