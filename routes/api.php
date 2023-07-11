@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ContactoController;
 use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\Api\RestaurantController;
+
 
 
 
@@ -21,13 +23,13 @@ use App\Http\Controllers\Api\UsuarioController;
 /* api formulario usuario*/
 
 
-Route::post("/usuarioC",[UsuarioController::class,'create']);
+Route::post('/usuarioC',[UsuarioController::class,"create"]);
 
-Route::get("/usuariosR",[UsuarioController::class,'read']);
+Route::get('/usuariosR',[UsuarioController::class,"read"]);
 
-Route::put("/usuarioU",[UsuarioController::class,'update']);
+Route::put('/usuarioU',[UsuarioController::class,"update"]);
 
-Route::delete("/usuarioD",[UsuarioController::class,'delete']);
+Route::delete('/usuarioD',[UsuarioController::class,"delete"]);
 
 
 /* api formulario contact*/ 
@@ -35,9 +37,15 @@ Route::delete("/usuarioD",[UsuarioController::class,'delete']);
 
 Route::post('/contactoC',[ContactoController::class,"create"]);
 Route::get('/contactoR',[ContactoController::class,"read"]);
-Route::put("/contactoU",[UsuarioController::class,'update']);
-Route::delete("/contactoD",[UsuarioController::class,'delete']);
+Route::put('/contactoU',[UsuarioController::class,'update']);
+Route::delete('/contactoD',[UsuarioController::class,'delete']);
 
+/* api nuevo cliente*/
+
+Route::post('/createClient',[ContactoController::class,"create"]);
+Route::get('/readClient',[RestaurantController::class,"read"]);
+Route::put('/actClient',[RestaurantController::class,'update']);
+Route::delete('/clientErase',[RestaurantController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
      return $request->user();
