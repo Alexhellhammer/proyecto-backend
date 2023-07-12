@@ -46,7 +46,7 @@ Route::delete('/clientErase',[RestaurantController::class,'delete']);
 
 
 
-Route::post('abc',[UsuarioController::class,"create"]);
+Route::post('/usuarioC',[UsuarioController::class,"create"]);
 
 Route::get('/usuariosR',[UsuarioController::class,"read"]);
 
