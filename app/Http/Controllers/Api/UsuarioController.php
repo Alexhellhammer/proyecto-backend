@@ -68,10 +68,29 @@ class UsuarioController extends Controller
 
         return $message;
     }
+    public function delete(Request $request)
+{
+    $idUsuario = $request->query("id");
+
+    $usuario = Usuario::find($idUsuario);
+
+    if (!$usuario) {
+        return response()->json(["message" => "Usuario no encontrado"], Response::HTTP_NOT_FOUND);
+    }
+
+    $usuario->delete();
+
+    $message = [
+        "message" => "Eliminación Exitosa!!",
+        "idUsuario" => $request->query("id"),
+    ];
+
+    return response()->json($message);
+}
 
         
 
-    public function delete(Request $request){
+    /*public function delete(Request $request){
 
         $idUsuario = $request->query("id");
 
@@ -87,7 +106,7 @@ class UsuarioController extends Controller
         ];
 
         return $message;
-    }
+    }*/
 
 
 }
